@@ -3,12 +3,13 @@ import logo from '../../img/logo.png';
 
 const Header = () => {
   return (
-    <div className='center'>
+    <header className='site-header'>
       <img
         src={logo}
         alt='A logo from one of the greatest television shows of all time, Breaking Bad'
       />
-    </div>
+      <p className='site-tagline'>The complete cast &amp; character archive</p>
+    </header>
   );
 };
 

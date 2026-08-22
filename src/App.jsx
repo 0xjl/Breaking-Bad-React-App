@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/ui/Header';
 import CharacterGrid from './components/characters/CharacterGrid';
 import Search from './components/ui/Search';
-import axios from 'axios';
+import characters from './data/characters.json';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -11,14 +11,11 @@ const App = () => {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    const fetchItems = async () => {
-      const result = await axios(
-        `https://www.breakingbadapi.com/api/characters?name=${query}`
-      );
-      setItems(result.data);
-      setIsLoading(false);
-    };
-    fetchItems();
+    const filtered = characters.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setItems(filtered);
+    setIsLoading(false);
   }, [query]);
 
   return (
